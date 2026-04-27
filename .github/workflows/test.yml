@@ -6,15 +6,18 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
-        
+
       - name: Initialize Node
         uses: actions/setup-node@v4
-        
+
       - name: Install Dependencies
-        run: cd backend && npm install
-        
+        run: npm install
+
       - name: Run backend tests
         run: npm test
